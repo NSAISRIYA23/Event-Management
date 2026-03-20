@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npx ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:eventsphere-frontend": "node dist/eventsphere-frontend/server/server.mjs"
