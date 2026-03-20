@@ -1,0 +1,128 @@
+[
+  {
+    "id": "e0ef33c985e446d09c184249cfef649a",
+    "userId": "e1a21d527fc14e0aa96dddc7113b92e9",
+    "items": [
+      {
+        "productId": "prd_workshop_kit",
+        "name": "Workshop Starter Kit",
+        "quantity": 1,
+        "unitPrice": 199,
+        "lineTotal": 199
+      }
+    ],
+    "totalAmount": 199,
+    "paymentMethod": "",
+    "receiptPdfUrl": "",
+    "status": "placed",
+    "createdAtUtc": "2026-03-19T15:17:10.4592076Z"
+  },
+  {
+    "id": "08360664ffd94071888863b59207845f",
+    "userId": "e1a21d527fc14e0aa96dddc7113b92e9",
+    "items": [
+      {
+        "productId": "prd_pass_vip",
+        "name": "VIP Access Pass Add-on",
+        "quantity": 1,
+        "unitPrice": 299,
+        "lineTotal": 299
+      }
+    ],
+    "totalAmount": 299,
+    "paymentMethod": "",
+    "receiptPdfUrl": "",
+    "status": "placed",
+    "createdAtUtc": "2026-03-19T16:02:56.6609819Z"
+  },
+  {
+    "id": "6eb80a1a2c5e4c38a280cf5bffee3eb2",
+    "userId": "b1b4c798958a4ed5aa224efa5dec3c22",
+    "items": [
+      {
+        "productId": "prd_workshop_kit",
+        "name": "Workshop Starter Kit",
+        "quantity": 1,
+        "unitPrice": 199,
+        "lineTotal": 199
+      }
+    ],
+    "totalAmount": 199,
+    "paymentMethod": "",
+    "receiptPdfUrl": "",
+    "status": "placed",
+    "createdAtUtc": "2026-03-19T17:36:42.0088563Z"
+  },
+  {
+    "id": "7fb4a163a5e2496baf5fb31cb6dc84ab",
+    "userId": "b1b4c798958a4ed5aa224efa5dec3c22",
+    "items": [
+      {
+        "productId": "prd_pass_vip",
+        "name": "VIP Access Pass Add-on",
+        "quantity": 1,
+        "unitPrice": 299,
+        "lineTotal": 299
+      }
+    ],
+    "totalAmount": 299,
+    "paymentMethod": "",
+    "receiptPdfUrl": "",
+    "status": "placed",
+    "createdAtUtc": "2026-03-19T18:49:42.8075289Z"
+  },
+  {
+    "id": "37d779b904c04fd4a86943f912104646",
+    "userId": "b1b4c798958a4ed5aa224efa5dec3c22",
+    "items": [
+      {
+        "productId": "prd_merch_combo",
+        "name": "Event Merch Combo (Tee \u002B Badge)",
+        "quantity": 1,
+        "unitPrice": 599,
+        "lineTotal": 599
+      }
+    ],
+    "totalAmount": 599,
+    "paymentMethod": "",
+    "receiptPdfUrl": "",
+    "status": "placed",
+    "createdAtUtc": "2026-03-19T22:01:31.9724753Z"
+  },
+  {
+    "id": "28ed1369458d4f639102c1d3fbd591ab",
+    "userId": "b1b4c798958a4ed5aa224efa5dec3c22",
+    "items": [
+      {
+        "productId": "prd_pass_vip",
+        "name": "VIP Access Pass Add-on",
+        "quantity": 1,
+        "unitPrice": 2800,
+        "lineTotal": 2800
+      }
+    ],
+    "totalAmount": 2800,
+    "paymentMethod": "UPI",
+    "receiptPdfUrl": "/uploads/confirmations/order_28ed1369458d4f639102c1d3fbd591ab.pdf",
+    "status": "placed",
+    "createdAtUtc": "2026-03-20T07:32:32.4442783Z"
+  },
+  {
+    "id": "f24c3c04b1c04a408063a3e2ecf9dfe2",
+    "userId": "b1b4c798958a4ed5aa224efa5dec3c22",
+    "items": [
+      {
+        "productId": "prd_pass_vip",
+        "name": "VIP Access Pass Add-on",
+        "quantity": 1,
+        "unitPrice": 2800,
+        "lineTotal": 2800
+      }
+    ],
+    "totalAmount": 2800,
+    "paymentMethod": "Net Banking",
+    "receiptPdfUrl": "/uploads/confirmations/order_f24c3c04b1c04a408063a3e2ecf9dfe2.pdf",
+    "status": "placed",
+    "createdAtUtc": "2026-03-20T07:38:01.3813561Z"
+  }
+]

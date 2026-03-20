@@ -1,0 +1,112 @@
+[
+  {
+    "id": "prd_pass_vip",
+    "name": "VIP Access Pass Add-on",
+    "description": "Fast entry lane \u002B reserved seating section (where applicable).",
+    "price": 2800,
+    "stock": 236,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-20T07:38:01.3814095Z"
+  },
+  {
+    "id": "prd_merch_combo",
+    "name": "Event Merch Combo (Tee \u002B Badge)",
+    "description": "Limited edition t-shirt with an enamel badge. Sizes selectable at pickup counter.",
+    "price": 3400,
+    "stock": 159,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T22:01:31.9726344Z"
+  },
+  {
+    "id": "prd_workshop_kit",
+    "name": "Workshop Starter Kit",
+    "description": "Notebook, pen, lanyard, and a quick reference card set for sessions.",
+    "price": 2500,
+    "stock": 518,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T17:36:42.009265Z"
+  },
+  {
+    "id": "prd_premium_seat",
+    "name": "Premium Seating Upgrade",
+    "description": "Better view seating zone for concerts, keynotes, and high-demand workshops.",
+    "price": 3200,
+    "stock": 180,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_tshirt_neon",
+    "name": "Neon Nights T-Shirt",
+    "description": "Breathable festival t-shirt featuring a neon gradient print and soft-touch fabric.",
+    "price": 3000,
+    "stock": 300,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_badge_techpro",
+    "name": "Tech Summit Pro Badge",
+    "description": "Upgraded badge with QR scan access to lounges and session recordings.",
+    "price": 2700,
+    "stock": 420,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_badge_college",
+    "name": "College Fest Student Badge",
+    "description": "Student-friendly badge with discounted entry lanes (where applicable).",
+    "price": 2200,
+    "stock": 800,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_lanyard_tote",
+    "name": "Lanyard \u002B Tote Pack",
+    "description": "Convenient lanyard and reusable tote bag for carrying workshop kits, maps, and merch.",
+    "price": 2400,
+    "stock": 600,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_certificate_pack",
+    "name": "Workshop Certificate Printing Pack",
+    "description": "Official printed certificates for team participants (template-based).",
+    "price": 2100,
+    "stock": 1000,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "prd_volunteer_kit",
+    "name": "Volunteer Support Kit",
+    "description": "Volunteer kit with quick-reference sheets, entry pass cover, and event guide booklet.",
+    "price": 2600,
+    "stock": 260,
+    "imageUrl": "uploads/sample.jpg",
+    "isActive": true,
+    "createdAtUtc": "2026-03-19T00:00:00Z",
+    "updatedAtUtc": "2026-03-19T00:00:00Z"
+  }
+]

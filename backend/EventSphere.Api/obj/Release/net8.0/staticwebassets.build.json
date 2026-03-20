@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2aDDZdOupfVjcnDsLzjq+D+eY1fbrEjADKbB2bM9Oqg=",
+  "Source": "EventSphere.Api",
+  "BasePath": "_content/EventSphere.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

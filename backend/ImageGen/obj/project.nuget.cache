@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Iil9G6XkF0Y=",
+  "success": true,
+  "projectFilePath": "C:\\Event Management\\backend\\ImageGen\\ImageGen.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\shriy\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.5\\microsoft.win32.systemevents.10.0.5.nupkg.sha512",
+    "C:\\Users\\shriy\\.nuget\\packages\\system.drawing.common\\10.0.5\\system.drawing.common.10.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
