@@ -1,0 +1,62 @@
+[
+  {
+    "id": "res_event_playbook",
+    "title": "Event Planning Playbook (PDF)",
+    "description": "A practical organizer playbook: timelines, vendor checklists, staffing roles, and day-of execution.",
+    "eventId": "",
+    "fileUrl": "/uploads/sample-res-1.pdf",
+    "originalFileName": "event-planning-playbook.pdf",
+    "fileSizeBytes": 248832,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "res_security_basics",
+    "title": "Cyber Safety Basics for Attendees (PDF)",
+    "description": "Quick guidance for secure Wi-Fi, phishing awareness, and device protection during public events.",
+    "eventId": "evt_techsummit_2026",
+    "fileUrl": "/uploads/sample-res-2.pdf",
+    "originalFileName": "cyber-safety-basics.pdf",
+    "fileSizeBytes": 191692,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "res_startup_pitch_guide",
+    "title": "Startup Pitch Guide (PDF)",
+    "description": "How to craft a clear narrative: problem, solution, traction, roadmap, and a confident closing.",
+    "eventId": "evt_startup_pitchnight_2026",
+    "fileUrl": "/uploads/sample-res-3.pdf",
+    "originalFileName": "startup-pitch-guide.pdf",
+    "fileSizeBytes": 212004,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "res_venue_setup_checklist",
+    "title": "Venue Setup Checklist (PDF)",
+    "description": "A concise checklist for layouts, stage requirements, accessibility checks, and signage templates.",
+    "eventId": "evt_collegefest_2026",
+    "fileUrl": "/uploads/sample-res-4.pdf",
+    "originalFileName": "venue-setup-checklist.pdf",
+    "fileSizeBytes": 176540,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "res_workshop_lab_pack",
+    "title": "Workshop Lab Pack (PDF)",
+    "description": "Lab worksheets, quick reference pages, and a structured agenda for interactive sessions.",
+    "eventId": "evt_cybersec_bootcamp_2026",
+    "fileUrl": "/uploads/sample-res-5.pdf",
+    "originalFileName": "workshop-lab-pack.pdf",
+    "fileSizeBytes": 204880,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  },
+  {
+    "id": "res_certificate_templates",
+    "title": "Certificates & Templates (PDF)",
+    "description": "Official certificate templates for teams and participants, ready for event organizers to print.",
+    "eventId": "evt_campus_sprints_2026",
+    "fileUrl": "/uploads/sample-res-6.pdf",
+    "originalFileName": "certificate-templates.pdf",
+    "fileSizeBytes": 230120,
+    "createdAtUtc": "2026-03-19T00:00:00Z"
+  }
+]

@@ -1,0 +1,49 @@
+@if (event$ | async; as e) {
+  <div class="wrap">
+    <div class="left">
+      <div class="es-chip">
+        <mat-icon>event</mat-icon>
+        <span>Event details</span>
+      </div>
+      <h2 class="title">{{ e.title }}</h2>
+      <div class="meta es-muted">
+        <span><mat-icon>place</mat-icon>{{ e.location }}</span>
+        <span><mat-icon>schedule</mat-icon>{{ e.startUtc | date:'medium' }}</span>
+      </div>
+      <p class="desc es-muted">{{ e.description }}</p>
+      <a mat-stroked-button routerLink="/events"><mat-icon>arrow_back</mat-icon>Back to events</a>
+    </div>
+
+    <mat-card class="es-card right">
+      <mat-card-content>
+        <div class="price">{{ e.price | currency:'INR':'symbol':'1.0-0' }}</div>
+        <div class="cap">Capacity: {{ e.capacity }}</div>
+
+        <div class="qty">
+          <mat-form-field appearance="outline">
+            <mat-label>Tickets</mat-label>
+            <input
+              matInput
+              type="number"
+              min="1"
+              [ngModel]="qty()"
+              (ngModelChange)="qty.set($event)"
+            />
+          </mat-form-field>
+        </div>
+
+        <button mat-flat-button color="primary" (click)="book(e.id)" [disabled]="bookingState() === 'saving'">
+          <mat-icon>confirmation_number</mat-icon>
+          Book Now
+        </button>
+
+        @if (bookingMsg()) {
+          <div class="msg">{{ bookingMsg() }}</div>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+} @else {
+  <div class="es-muted">Loading…</div>
+}
+

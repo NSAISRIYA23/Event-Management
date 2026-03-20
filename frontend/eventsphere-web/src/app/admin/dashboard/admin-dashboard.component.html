@@ -1,0 +1,47 @@
+<section class="hero">
+  <div>
+    <h2 class="title">Dashboard</h2>
+    <div class="subtitle">Track your EventSphere platform activity in one place.</div>
+  </div>
+  <a class="hero-btn" routerLink="/admin/events">
+    <mat-icon>add_circle</mat-icon>
+    Create Event
+  </a>
+</section>
+
+@if (stats$ | async; as s) {
+  <section class="kpi-grid">
+    <article class="kpi-card">
+      <div class="kpi-head">
+        <span class="kpi-label">Total Events</span>
+        <mat-icon>event</mat-icon>
+      </div>
+      <div class="kpi-value">{{ s.totalEvents }}</div>
+      <a class="kpi-link" routerLink="/admin/events">Manage events</a>
+    </article>
+
+    <article class="kpi-card">
+      <div class="kpi-head">
+        <span class="kpi-label">Total Bookings</span>
+        <mat-icon>confirmation_number</mat-icon>
+      </div>
+      <div class="kpi-value">{{ s.totalBookings }}</div>
+      <span class="kpi-note">Bookings completed by attendees</span>
+    </article>
+
+    <article class="kpi-card">
+      <div class="kpi-head">
+        <span class="kpi-label">Total Orders</span>
+        <mat-icon>shopping_bag</mat-icon>
+      </div>
+      <div class="kpi-value">{{ s.totalOrders }}</div>
+      <a class="kpi-link" routerLink="/admin/products">Manage products</a>
+    </article>
+  </section>
+} @else {
+  <section class="kpi-grid">
+    <article class="kpi-card skeleton"></article>
+    <article class="kpi-card skeleton"></article>
+    <article class="kpi-card skeleton"></article>
+  </section>
+}

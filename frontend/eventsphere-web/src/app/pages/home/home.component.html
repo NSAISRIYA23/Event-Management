@@ -1,0 +1,102 @@
+<section class="es-hero">
+  <div class="heroOrbs"></div>
+
+  <div class="heroGrid">
+    <div class="leftCol">
+      <div class="es-chip infoChip">
+        <mat-icon>auto_awesome</mat-icon>
+        <span>All-in-one Platform for exceptional events</span>
+      </div>
+
+      <h1 class="heroTitle">
+        "Simplifying events Amplifying&nbsp;experiences"
+      </h1>
+
+      <p class="heroSub es-muted">
+        EventSphere helps organizers publish events, attendees book instantly, and communities
+        share resources - all in one clean experience.
+      </p>
+
+      <div class="es-actions">
+        <a mat-flat-button color="primary" routerLink="/events" class="ctaBtn">
+          <mat-icon>event</mat-icon>
+          Explore events
+        </a>
+
+        <a mat-flat-button color="primary" routerLink="/marketplace" class="ctaBtn">
+          <mat-icon>storefront</mat-icon>
+          Browse marketplace
+        </a>
+      </div>
+    </div>
+
+    <div class="rightCol">
+      <div class="quickHead">
+        <h3>Quick actions</h3>
+        <p>Everything you need in seconds</p>
+      </div>
+
+      <a class="quickItem" routerLink="/resources">
+        <mat-icon>folder</mat-icon>
+        <div>
+          <div class="quickTitle">Resource center</div>
+          <div class="quickSub">Download PDFs linked to events</div>
+        </div>
+      </a>
+
+      <a class="quickItem" routerLink="/my-bookings">
+        <mat-icon>confirmation_number</mat-icon>
+        <div>
+          <div class="quickTitle">My bookings</div>
+          <div class="quickSub">Access confirmations anytime</div>
+        </div>
+      </a>
+
+      <a class="quickItem" routerLink="/my-orders">
+        <mat-icon>receipt_long</mat-icon>
+        <div>
+          <div class="quickTitle">My orders</div>
+          <div class="quickSub">Track marketplace purchases</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="es-page">
+  <div class="trustedWrap">
+
+    <div class="trustedHeader">
+      <h2 class="es-section-title">
+        We have worked with brands like
+      </h2>
+      <div class="es-muted">
+        Reliable event experiences for teams who move fast.
+      </div>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee__track">
+
+        <div class="marquee__row">
+          @for (brand of brands; track brand) {
+            <div class="brandLogo">
+              <span class="brandText">{{ brand }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="marquee__row">
+          @for (brand of brands; track brand) {
+            <div class="brandLogo">
+              <span class="brandText">{{ brand }}</span>
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

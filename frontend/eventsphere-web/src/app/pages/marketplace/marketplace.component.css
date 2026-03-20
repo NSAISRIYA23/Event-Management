@@ -1,0 +1,135 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.headLeft {
+  display: flex;
+  flex-direction: column;
+}
+.marketBgWrap {
+  padding: 18px;
+  margin-top: 10px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.70),
+    rgba(15, 23, 42, 0.65)
+  );
+
+  width: 100%;
+  margin-inline: calc(50% - 50vw);
+}
+
+.marketBgWrap .es-section-title,
+.marketBgWrap .es-muted {
+  color: #F8FAFC;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 920px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* CARD SAME AS EVENTS */
+.marketCard {
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #0f172a, #111827);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%; /* important */
+  min-height: 320px;
+
+  transition: all 0.3s ease;
+}
+
+.marketCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+/* IMAGE FIX (IMPORTANT) */
+.imageWrap {
+  position: relative;
+  height: 180px;
+  flex-shrink: 0; /* prevents stretch */
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* key fix */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.marketCard:hover img {
+  transform: scale(1.08);
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+}
+
+/* PRICE */
+.priceTag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #C9A227, #B68A1E);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* CONTENT */
+mat-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* important for equal height */
+}
+
+/* TEXT */
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 14px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* BUTTON ALIGNMENT FIX */
+.actions {
+  margin-top: auto; /* pushes button to bottom */
+  display: flex;
+  justify-content: flex-end;
+}

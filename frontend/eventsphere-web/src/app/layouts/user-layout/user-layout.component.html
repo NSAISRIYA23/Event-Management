@@ -1,0 +1,56 @@
+
+<mat-toolbar class="es-topbar" color="primary">
+  <div class="es-container es-topbar__inner">
+    <a routerLink="/home" class="es-brand">
+      <span class="es-brand__mark"></span>
+      <span class="es-brand__text">EventSphere</span>
+    </a>
+
+    <nav class="es-nav">
+      <a mat-button routerLink="/events" routerLinkActive="active">Events</a>
+      <a mat-button routerLink="/resources" routerLinkActive="active">Resources</a>
+      <a mat-button routerLink="/marketplace" routerLinkActive="active">Marketplace</a>
+      <a mat-button routerLink="/cart" routerLinkActive="active">
+        <mat-icon>shopping_bag</mat-icon>
+        Cart
+      </a>
+    </nav>
+
+    <span class="es-spacer"></span>
+
+    @if (!isLoggedIn()) {
+      <a mat-stroked-button routerLink="/login">Log in</a>
+      <a mat-flat-button routerLink="/register">Create account</a>
+    } @else {
+      <button type="button" [matMenuTriggerFor]="menu" class="es-userBtn">
+        <span class="es-avatar">{{ initials() }}</span>
+        <span class="es-userMeta">
+          <span class="es-userName">{{ user()?.name }}</span>
+        </span>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/my-bookings"><mat-icon>confirmation_number</mat-icon>My bookings</a>
+        <a mat-menu-item routerLink="/my-orders"><mat-icon>receipt_long</mat-icon>My orders</a>
+        @if (isAdmin()) {
+          <mat-divider></mat-divider>
+          <a mat-menu-item routerLink="/admin/dashboard"><mat-icon>admin_panel_settings</mat-icon>Admin</a>
+        }
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+      </mat-menu>
+    }
+  </div>
+</mat-toolbar>
+
+<main class="es-container es-page">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="es-footer">
+  <div class="es-container es-footer__inner es-muted">
+    <span>© {{ year }} EventSphere</span>
+    <span>Built for event management + marketplace</span>
+  </div>
+</footer>
+

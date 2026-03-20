@@ -1,0 +1,49 @@
+<div class="ordersWrap">
+  <div class="hero">
+    <h2 class="es-section-title">My orders</h2>
+    <div class="es-muted">Marketplace purchases, payment details, and downloadable receipts.</div>
+  </div>
+
+  <div class="grid">
+    @if (orders$ | async; as items) {
+      @for (o of items; track o.id) {
+        <mat-card class="es-card card">
+          <mat-card-content>
+            <div class="row">
+              <div class="title">Order #{{ o.id.slice(0, 8) }}</div>
+              <div class="amount">{{ o.totalAmount | currency:'INR':'symbol':'1.0-0' }}</div>
+            </div>
+            <div class="meta es-muted">
+              <span><mat-icon>schedule</mat-icon>{{ o.createdAtUtc | date:'medium' }}</span>
+              <span><mat-icon>shopping_bag</mat-icon>{{ o.items.length }} item(s)</span>
+              <span><mat-icon>payment</mat-icon>{{ o.paymentMethod }}</span>
+            </div>
+            <div class="lines">
+              @for (li of o.items; track li.productId) {
+                <div class="line es-muted">
+                  <span>{{ li.name }}</span>
+                  <span>x{{ li.quantity }}</span>
+                </div>
+              }
+            </div>
+            @if (o.receiptPdfUrl) {
+              <div class="actions">
+                <a mat-stroked-button color="primary" [href]="origin() + o.receiptPdfUrl" target="_blank" rel="noopener">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </a>
+              </div>
+            }
+          </mat-card-content>
+        </mat-card>
+      } @empty {
+        <div class="emptyCard">
+          <app-empty-state icon="receipt_long" title="No orders yet" description="Add products to cart and place an order to see it here." />
+        </div>
+      }
+    } @else {
+      <app-loading-block />
+    }
+  </div>
+</div>
+

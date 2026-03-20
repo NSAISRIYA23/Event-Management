@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#0F172A" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="r" cx="75%" cy="30%" r="60%">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="520" fill="#0F172A"/>
+  <rect width="1600" height="520" fill="url(#g)"/>
+  <rect width="1600" height="520" fill="url(#r)"/>
+
+  <!-- circuit nodes -->
+  <g filter="url(#glow)" opacity="0.55">
+    <circle cx="180" cy="140" r="9" fill="#22C55E"/>
+    <circle cx="360" cy="230" r="7" fill="#7C3AED"/>
+    <circle cx="540" cy="160" r="8" fill="#F59E0B"/>
+    <circle cx="740" cy="260" r="7" fill="#22C55E"/>
+    <circle cx="930" cy="170" r="9" fill="#7C3AED"/>
+    <circle cx="1150" cy="260" r="8" fill="#F59E0B"/>
+    <circle cx="1330" cy="190" r="7" fill="#22C55E"/>
+
+    <path d="M180 140 L360 230 L540 160 L740 260 L930 170 L1150 260 L1330 190" stroke="#F8FAFC" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- subtle grid -->
+  <g opacity="0.08" stroke="#F8FAFC">
+    <path d="M0 80 H1600"/>
+    <path d="M0 160 H1600"/>
+    <path d="M0 240 H1600"/>
+    <path d="M0 320 H1600"/>
+    <path d="M0 400 H1600"/>
+    <path d="M120 0 V520"/>
+    <path d="M240 0 V520"/>
+    <path d="M360 0 V520"/>
+    <path d="M480 0 V520"/>
+    <path d="M600 0 V520"/>
+    <path d="M720 0 V520"/>
+    <path d="M840 0 V520"/>
+    <path d="M960 0 V520"/>
+    <path d="M1080 0 V520"/>
+    <path d="M1200 0 V520"/>
+    <path d="M1320 0 V520"/>
+    <path d="M1440 0 V520"/>
+  </g>
+</svg>
+

@@ -1,0 +1,330 @@
+<div class="wrap">
+  <div class="head">
+    <a mat-stroked-button color="primary" [routerLink]="mode === 'order' ? '/cart' : '/events'">
+      <mat-icon>arrow_back</mat-icon>
+      {{ mode === 'order' ? 'Back to cart' : 'Back to events' }}
+    </a>
+  </div>
+
+  @if (mode === 'order') {
+    <div class="grid">
+      <mat-card class="es-card panel">
+        <mat-card-content>
+          <div class="titleRow">
+            <div>
+              <div class="kicker es-muted">Cart payment</div>
+              <div class="title">Marketplace checkout</div>
+            </div>
+            <div class="amount">
+              {{ cartTotal() | currency:'INR':'symbol':'1.0-0' }}
+            </div>
+          </div>
+
+          <div class="meta">
+            <span class="es-muted">
+              <mat-icon>shopping_bag</mat-icon>
+              {{ lines().length }} item(s)
+            </span>
+            <span class="es-muted">
+              <mat-icon>receipt_long</mat-icon>
+              Total: {{ cartTotal() | currency:'INR':'symbol':'1.0-0' }}
+            </span>
+          </div>
+
+          <mat-divider class="divider" />
+
+          <div class="section">
+            <div class="sectionTitle">Select payment method</div>
+
+            <mat-radio-group [(ngModel)]="paymentMethod" class="radios">
+              <mat-radio-button value="upi">
+                <span>UPI</span>
+              </mat-radio-button>
+              <mat-radio-button value="card">
+                <span>Card</span>
+              </mat-radio-button>
+              <mat-radio-button value="netbanking">
+                <span>Net Banking</span>
+              </mat-radio-button>
+              <mat-radio-button value="cod">
+                <span>Cash on Delivery</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          @if (paymentMethod === 'upi') {
+            <div class="section">
+              <div class="sectionTitle">UPI details</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>UPI ID</mat-label>
+                <input matInput placeholder="name@bank" [(ngModel)]="upiId" />
+              </mat-form-field>
+              <div class="es-muted">Dummy: `demo.user@okicici`, `sample.pay@oksbi`</div>
+            </div>
+          }
+
+          @if (paymentMethod === 'card') {
+            <div class="section">
+              <div class="sectionTitle">Card details</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Card number</mat-label>
+                <input matInput placeholder="1234 5678 9012 3456" [(ngModel)]="cardNumber" inputmode="numeric" />
+              </mat-form-field>
+              <div class="es-muted">Dummy card: `4111 1111 1111 1111` | Expiry: `12/30` | CVV: `123`</div>
+
+              <div class="row2">
+                <mat-form-field appearance="outline" class="half">
+                  <mat-label>Expiry (MM/YY)</mat-label>
+                  <input matInput placeholder="MM/YY" [(ngModel)]="expiry" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="half">
+                  <mat-label>CVV</mat-label>
+                  <input matInput placeholder="123" [(ngModel)]="cvv" inputmode="numeric" />
+                </mat-form-field>
+              </div>
+            </div>
+          }
+
+          @if (paymentMethod === 'netbanking') {
+            <div class="section">
+              <div class="sectionTitle">Net Banking</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Select bank</mat-label>
+                <mat-select [(ngModel)]="bankCode">
+                  <mat-option value="sbi">State Bank of India (SBI)</mat-option>
+                  <mat-option value="hdfc">HDFC Bank</mat-option>
+                  <mat-option value="icici">ICICI Bank</mat-option>
+                  <mat-option value="axis">Axis Bank</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          }
+
+          @if (paymentMethod === 'cod') {
+            <div class="section">
+              <div class="sectionTitle">Cash on delivery</div>
+              <div class="es-muted">
+                You will pay on delivery. Order will be confirmed immediately after this simulation.
+              </div>
+            </div>
+          }
+
+          <div class="actions">
+            <button mat-flat-button color="primary" (click)="payNow()" [disabled]="processing">
+              <mat-icon>payment</mat-icon>
+              Pay Now
+            </button>
+          </div>
+
+          @if (processing) {
+            <div class="processing">
+              <mat-progress-spinner mode="indeterminate" diameter="26" />
+              <div>Processing payment...</div>
+            </div>
+          }
+
+          @if (msg) {
+            <div class="msg es-muted">{{ msg }}</div>
+          }
+
+          @if (successMsg) {
+            <div class="success">
+              <div class="successTitle">{{ successMsg }}</div>
+              @if (receiptUrl) {
+                <a mat-flat-button color="primary" [href]="receiptUrl" target="_blank" rel="noopener">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </a>
+              }
+              <a mat-stroked-button color="primary" routerLink="/my-orders">Go to my orders</a>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="es-card sidePanel">
+        <mat-card-content>
+          <div class="sideTitle">Secure checkout</div>
+          <div class="sideItem">
+            <mat-icon>verified_user</mat-icon>
+            <div>
+              <div class="itemTitle">Protected payment flow</div>
+              <div class="es-muted">Encrypted simulation with safe sample credentials.</div>
+            </div>
+          </div>
+          <div class="sideItem">
+            <mat-icon>receipt_long</mat-icon>
+            <div>
+              <div class="itemTitle">Professional receipt</div>
+              <div class="es-muted">Invoice is generated automatically after successful payment.</div>
+            </div>
+          </div>
+          <div class="sideItem">
+            <mat-icon>support_agent</mat-icon>
+            <div>
+              <div class="itemTitle">Instant confirmation</div>
+              <div class="es-muted">Order and booking confirmation appears immediately.</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  } @else if (event$ | async; as e) {
+    <div class="grid">
+      <mat-card class="es-card panel">
+        <mat-card-content>
+          <div class="titleRow">
+            <div>
+              <div class="kicker es-muted">Event payment</div>
+              <div class="title">{{ e.title }}</div>
+            </div>
+            <div class="amount">
+              {{ e.price * quantity | currency:'INR':'symbol':'1.0-0' }}
+            </div>
+          </div>
+
+          <div class="meta">
+            <span class="es-muted">
+              <mat-icon>place</mat-icon>
+              {{ e.location }}
+            </span>
+            <span class="es-muted">
+              <mat-icon>schedule</mat-icon>
+              {{ e.startUtc | date:'medium' }}
+            </span>
+            <span class="es-muted">
+              <mat-icon>confirmation_number</mat-icon>
+              {{ quantity }} ticket(s)
+            </span>
+          </div>
+
+          <mat-divider class="divider" />
+
+          <div class="section">
+            <div class="sectionTitle">Select payment method</div>
+
+            <mat-radio-group [(ngModel)]="paymentMethod" class="radios">
+              <mat-radio-button value="upi">
+                <span>UPI</span>
+              </mat-radio-button>
+              <mat-radio-button value="card">
+                <span>Card</span>
+              </mat-radio-button>
+              <mat-radio-button value="netbanking">
+                <span>Net Banking</span>
+              </mat-radio-button>
+              <mat-radio-button value="cod">
+                <span>Cash on Delivery</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          @if (paymentMethod === 'upi') {
+            <div class="section">
+              <div class="sectionTitle">UPI details</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>UPI ID</mat-label>
+                <input matInput placeholder="name@bank" [(ngModel)]="upiId" />
+              </mat-form-field>
+              <div class="es-muted">Dummy: `demo.user@okicici`, `sample.pay@oksbi`</div>
+            </div>
+          }
+
+          @if (paymentMethod === 'card') {
+            <div class="section">
+              <div class="sectionTitle">Card details</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Card number</mat-label>
+                <input matInput placeholder="1234 5678 9012 3456" [(ngModel)]="cardNumber" inputmode="numeric" />
+              </mat-form-field>
+              <div class="es-muted">Dummy card: `4111 1111 1111 1111` | Expiry: `12/30` | CVV: `123`</div>
+
+              <div class="row2">
+                <mat-form-field appearance="outline" class="half">
+                  <mat-label>Expiry (MM/YY)</mat-label>
+                  <input matInput placeholder="MM/YY" [(ngModel)]="expiry" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="half">
+                  <mat-label>CVV</mat-label>
+                  <input matInput placeholder="123" [(ngModel)]="cvv" inputmode="numeric" />
+                </mat-form-field>
+              </div>
+            </div>
+          }
+
+          @if (paymentMethod === 'netbanking') {
+            <div class="section">
+              <div class="sectionTitle">Net Banking</div>
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Select bank</mat-label>
+                <mat-select [(ngModel)]="bankCode">
+                  <mat-option value="sbi">State Bank of India (SBI)</mat-option>
+                  <mat-option value="hdfc">HDFC Bank</mat-option>
+                  <mat-option value="icici">ICICI Bank</mat-option>
+                  <mat-option value="axis">Axis Bank</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          }
+
+          @if (paymentMethod === 'cod') {
+            <div class="section">
+              <div class="sectionTitle">Cash on delivery</div>
+              <div class="es-muted">
+                You will pay on delivery. Order will be confirmed immediately after this simulation.
+              </div>
+            </div>
+          }
+
+          <div class="actions">
+            <button mat-flat-button color="primary" (click)="payNow()" [disabled]="processing">
+              <mat-icon>payment</mat-icon>
+              Pay Now
+            </button>
+          </div>
+
+          @if (processing) {
+            <div class="processing">
+              <mat-progress-spinner mode="indeterminate" diameter="26" />
+              <div>Processing payment...</div>
+            </div>
+          }
+
+          @if (msg) {
+            <div class="msg es-muted">{{ msg }}</div>
+          }
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="es-card sidePanel">
+        <mat-card-content>
+          <div class="sideTitle">Booking summary</div>
+          <div class="sideItem">
+            <mat-icon>event</mat-icon>
+            <div>
+              <div class="itemTitle">{{ e.title }}</div>
+              <div class="es-muted">{{ e.startUtc | date:'mediumDate' }} at {{ e.location }}</div>
+            </div>
+          </div>
+          <div class="sideItem">
+            <mat-icon>confirmation_number</mat-icon>
+            <div>
+              <div class="itemTitle">{{ quantity }} ticket(s)</div>
+              <div class="es-muted">Payment method can be changed before completing checkout.</div>
+            </div>
+          </div>
+          <div class="sideItem">
+            <mat-icon>workspace_premium</mat-icon>
+            <div>
+              <div class="itemTitle">Professional confirmation</div>
+              <div class="es-muted">After payment, you get a clean downloadable invoice.</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  } @else {
+    <app-loading-block />
+  }
+</div>
+

@@ -1,0 +1,8 @@
+﻿EventSphere Booking Confirmation
+
+Booking ID: 03a57fcac525493e89dfd781fc2efe06
+Event: Founder Roundtable – Product, Growth & Hiring
+Event ID: evt_founder_roundtable_2026
+Quantity: 1
+Total: 149
+Created (UTC): 2026-03-19T16:43:26.3180519Z

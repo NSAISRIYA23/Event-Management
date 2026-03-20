@@ -1,0 +1,58 @@
+<div class="cartWrap">
+  <div class="head">
+    <div>
+      <h2 class="es-section-title">Cart</h2>
+      <div class="es-muted">Review your items and place your order with confidence.</div>
+    </div>
+    <a mat-stroked-button routerLink="/marketplace"><mat-icon>arrow_back</mat-icon>Continue shopping</a>
+  </div>
+
+  @if (lines().length === 0) {
+    <mat-card class="es-card empty">
+      <mat-card-content>
+        <div class="es-muted">Your cart is empty.</div>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <div class="grid">
+      <div class="list">
+        @for (l of lines(); track l.productId) {
+          <mat-card class="es-card row">
+            <mat-card-content class="rowInner">
+              <div class="left">
+                <div class="name">{{ l.name }}</div>
+                <div class="price es-muted">Unit price: {{ l.unitPrice | currency:'INR':'symbol':'1.0-0' }}</div>
+              </div>
+              <mat-form-field appearance="outline" class="qty">
+                <mat-label>Qty</mat-label>
+                <input matInput type="number" min="1" [ngModel]="l.quantity" (ngModelChange)="setQty(l.productId, $event)" />
+              </mat-form-field>
+              <div class="lineTotal">{{ (l.unitPrice * l.quantity) | currency:'INR':'symbol':'1.0-0' }}</div>
+              <button mat-icon-button class="deleteBtn" (click)="remove(l.productId)" aria-label="Remove">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+
+      <mat-card class="es-card summary">
+        <mat-card-content>
+          <div class="sumTitle">Order summary</div>
+          <div class="sumRow">
+            <span class="es-muted">Total</span>
+            <span class="sumTotal">{{ total() | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <button mat-flat-button color="primary" (click)="placeOrder()" [disabled]="placing()">
+            <mat-icon>payments</mat-icon>
+            Place order
+          </button>
+          @if (msg()) {
+            <div class="msg es-muted">{{ msg() }}</div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+</div>
+

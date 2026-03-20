@@ -1,0 +1,86 @@
+<div class="head">
+  <div>
+    <h2 class="es-section-title">Manage events</h2>
+    <div class="es-muted">Create, edit, and organize events with categories.</div>
+  </div>
+
+  <div class="actions">
+    <button mat-stroked-button (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+      Refresh
+    </button>
+    <button mat-flat-button color="primary" (click)="openCreate()">
+      <mat-icon>add</mat-icon>
+      Create event
+    </button>
+  </div>
+</div>
+
+@if (loading()) {
+  <app-loading-block />
+}
+
+@if (!loading() && events().length === 0) {
+  <app-empty-state icon="event_busy" title="No events yet" description="Create your first event to get started." />
+} @else if (!loading()) {
+  <mat-card class="es-card tableCard">
+    <mat-card-content>
+      <table mat-table [dataSource]="events()" class="table">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let e">
+            <div class="cellTitle">{{ e.title }}</div>
+            <div class="es-muted small">#{{ e.id.slice(0, 8) }}</div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="schedule">
+          <th mat-header-cell *matHeaderCellDef>Schedule</th>
+          <td mat-cell *matCellDef="let e" class="es-muted">
+            <div>{{ e.startUtc | date:'medium' }}</div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Location</th>
+          <td mat-cell *matCellDef="let e" class="es-muted">{{ e.location || '—' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Category</th>
+          <td mat-cell *matCellDef="let e">
+            <mat-chip-set>
+              <mat-chip>{{ categoryName(e.categoryId) }}</mat-chip>
+            </mat-chip-set>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let e" class="es-muted">{{ e.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>Capacity</th>
+          <td mat-cell *matCellDef="let e" class="es-muted">{{ e.capacity }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let e" class="actionsCol">
+            <button mat-icon-button (click)="openEdit(e)" aria-label="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete(e)" aria-label="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+}
+

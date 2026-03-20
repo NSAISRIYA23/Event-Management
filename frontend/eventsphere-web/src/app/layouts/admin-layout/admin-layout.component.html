@@ -1,0 +1,55 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <div class="logo-icon">
+          <span>ES</span>
+        </div>
+        <div>
+          <div class="logo-title">EventSphere</div>
+          <div class="logo-sub">Admin Panel</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" routerLink="/admin/dashboard" routerLinkActive="active">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a class="menu-item" routerLink="/admin/events" routerLinkActive="active">
+          <mat-icon>event</mat-icon>
+          Events
+        </a>
+        <a class="menu-item" routerLink="/admin/products" routerLinkActive="active">
+          <mat-icon>storefront</mat-icon>
+          Products
+        </a>
+        <a class="menu-item" routerLink="/admin/resources" routerLinkActive="active">
+          <mat-icon>folder</mat-icon>
+          Resources
+        </a>
+      </nav>
+    </div>
+
+    <div class="user">
+      <div class="user-name">{{ user()?.name }}</div>
+      <div class="user-email">{{ user()?.email }}</div>
+      <button class="logout-btn" type="button" (click)="logout()">Logout</button>
+      <a class="back-link" routerLink="/home">Back to site</a>
+    </div>
+  </aside>
+
+  <section class="content">
+    <header class="topbar">
+      <div>
+        <div class="topbar-title">Organizer Workspace</div>
+        <div class="topbar-sub">Manage events, products, and resources</div>
+      </div>
+      <a class="topbar-link" routerLink="/admin/events">Manage Events</a>
+    </header>
+
+    <main class="page">
+      <router-outlet />
+    </main>
+  </section>
+</div>

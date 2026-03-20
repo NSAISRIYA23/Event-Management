@@ -1,0 +1,213 @@
+.wrap {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.62));
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+}
+
+.head {
+  margin-bottom: 12px;
+}
+
+.head a[mat-stroked-button] {
+  color: #111827 !important;
+  border-color: #d4af37 !important;
+  background: linear-gradient(135deg, #d4af37, #c9a227) !important;
+  font-weight: 700;
+}
+
+.head a[mat-stroked-button]:hover {
+  color: #0b1220 !important;
+  border-color: #f7df9d !important;
+  background: linear-gradient(135deg, #f7df9d, #d4af37) !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.panel {
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(160deg, #111827, #1f2937);
+  color: #f8fafc;
+}
+
+.sidePanel {
+  background: linear-gradient(160deg, #1f2937, #111827);
+  color: #f8fafc;
+}
+
+/* `es-muted` is tuned for light pages globally; on this dark UI it becomes low-contrast.
+   Override muted text colors for this component only. */
+.panel .es-muted,
+.sidePanel .es-muted {
+  color: rgba(248, 250, 252, 0.68) !important;
+}
+
+.panel .es-muted mat-icon,
+.sidePanel .es-muted mat-icon {
+  color: rgba(248, 250, 252, 0.68) !important;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.kicker {
+  font: var(--mat-sys-body-small);
+  margin-bottom: 6px;
+}
+
+.title {
+  font: var(--mat-sys-title-large);
+  letter-spacing: -0.2px;
+}
+
+.amount {
+  font: var(--mat-sys-display-small);
+  white-space: nowrap;
+  color: #f7df9d;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.meta mat-icon {
+  margin-right: 6px;
+}
+
+.divider {
+  margin: 18px 0;
+}
+
+.section {
+  margin-top: 14px;
+}
+
+.sectionTitle {
+  font: var(--mat-sys-title-medium);
+  margin-bottom: 8px;
+  color: #f7df9d;
+}
+
+.full {
+  width: 100%;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.half {
+  width: 100%;
+}
+
+.actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.processing {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-outline-variant) 80%, transparent);
+  background: color-mix(in srgb, var(--mat-sys-surface) 90%, var(--mat-sys-primary) 10%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.msg {
+  margin-top: 12px;
+  color: #fecaca;
+}
+
+.success {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.14), rgba(182, 138, 30, 0.12));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.successTitle {
+  width: 100%;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.sideTitle {
+  font: var(--mat-sys-title-large);
+  margin-bottom: 12px;
+  color: #f7df9d;
+}
+
+.sideItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.itemTitle {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sideItem mat-icon {
+  color: #d4af37;
+}
+
+::ng-deep .wrap .mat-mdc-radio-button .mdc-form-field {
+  color: #f8fafc;
+}
+
+::ng-deep .wrap .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+::ng-deep .wrap .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-color: rgba(255, 255, 255, 0.03);
+}
+
+::ng-deep .wrap .mdc-text-field--outlined .mdc-floating-label,
+::ng-deep .wrap .mdc-text-field--outlined input,
+::ng-deep .wrap .mat-mdc-select-value {
+  color: #f8fafc !important;
+}
+
+::ng-deep .wrap .mdc-notched-outline__leading,
+::ng-deep .wrap .mdc-notched-outline__notch,
+::ng-deep .wrap .mdc-notched-outline__trailing {
+  border-color: rgba(201, 162, 39, 0.35) !important;
+}
+
+@media (min-width: 920px) {
+  .grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+

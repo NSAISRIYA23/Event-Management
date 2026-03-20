@@ -1,0 +1,20 @@
+﻿EventSphere
+========================================
+        Booking Confirmation
+========================================
+
+Booking ID   : cb670717c8a143179e246903c37ba538
+Attendee     : sriya
+Booking Date : 2026-03-20
+
+Event        : Open Mic Urban Jam – Comedy & Poetry
+Event Start  : 2026-04-25 12:30 UTC
+Location     : Delhi • Riverside Theatre
+
+Quantity     : 1
+Total Amount : 2400
+
+----------------------------------------
+Thank you for booking with EventSphere!
+Have an amazing event experience.
+----------------------------------------

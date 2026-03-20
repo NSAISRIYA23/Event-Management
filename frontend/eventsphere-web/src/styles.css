@@ -1,0 +1,223 @@
+/* Include theming for Angular Material with `mat.theme()`.
+/* Sass mixins are removed as part of strict SCSS -> CSS conversion. */
+
+html {
+  height: 100%;
+}
+
+body {
+  /* Default the application to a light color theme. This can be changed to
+     `dark` to enable the dark color theme, or to `light dark` to defer to the
+     user's system settings. */
+  color-scheme: light;
+
+  /* Set a default background, font and text colors for the application using
+     Angular Material's system-level CSS variables. Learn more about these
+     variables at https://material.angular.dev/guide/system-variables */
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font: var(--mat-sys-body-medium);
+
+  /* Reset the user agent margin. */
+  margin: 0;
+  height: 100%;
+}
+
+:root {
+  --es-max: 1180px;
+}
+
+:root {
+  --es-primary: #C9A227;
+  --es-secondary: #1F2937;
+  --es-accent: #D4AF37;
+  --es-warm: #B68A1E;
+  --es-bg: #F4F4F5;
+  --es-radius: 12px;
+
+  /* Override Angular Material system tokens (used by our es-* styles) */
+  --mat-sys-primary: #C9A227;
+  --mat-sys-tertiary: #D4AF37;
+  --mat-sys-surface: #F4F4F5;
+  --mat-sys-on-surface: #1F2937;
+  --mat-sys-outline-variant: rgba(31, 41, 55, 0.16);
+}
+
+.es-container {
+  width: min(1180px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.es-page {
+  padding: 28px 0 56px;
+}
+
+.es-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.es-card {
+  border: 1px solid color-mix(in srgb, var(--mat-sys-outline-variant) 70%, transparent);
+  border-radius: var(--es-radius, 12px);
+  background: color-mix(in srgb, var(--mat-sys-surface) 88%, var(--mat-sys-primary) 12%);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.es-muted {
+  color: color-mix(in srgb, var(--mat-sys-on-surface) 70%, transparent);
+}
+
+.es-section-title {
+  font: var(--mat-sys-title-large);
+  letter-spacing: -0.2px;
+  margin: 0 0 10px;
+}
+
+.es-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-outline-variant) 80%, transparent);
+  background: color-mix(in srgb, var(--mat-sys-surface) 92%, var(--mat-sys-tertiary) 8%);
+}
+
+.es-hero {
+  border-radius: calc(var(--es-radius, 12px) + 8px);
+  padding: 28px;
+  background:
+    radial-gradient(1000px 500px at 10% 10%, color-mix(in srgb, var(--mat-sys-primary) 38%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 90% 20%, color-mix(in srgb, var(--mat-sys-tertiary) 30%, transparent), transparent 55%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--mat-sys-surface) 92%, var(--mat-sys-primary) 8%),
+      var(--mat-sys-surface)
+    );
+  border: 1px solid color-mix(in srgb, var(--mat-sys-outline-variant) 65%, transparent);
+}
+
+.es-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 🔥 MATERIAL MENU PANEL FIX */
+.cdk-overlay-pane .mat-mdc-menu-panel {
+  background: #2f3640 !important;
+  color: white !important;
+  border: 1px solid rgba(201, 162, 39, 0.35) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4) !important;
+  min-width: 240px !important;
+  padding: 8px 0 !important;
+}
+
+/* MENU HEADER */
+.menuHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+}
+
+/* AVATAR */
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C9A227, #B68A1E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+}
+
+/* TEXT */
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.email {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* MENU ITEMS */
+.cdk-overlay-pane .mat-mdc-menu-item {
+  color: rgba(255,255,255,0.9) !important;
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+/* HOVER */
+.cdk-overlay-pane .mat-mdc-menu-item:hover {
+  background: linear-gradient(135deg, #C9A227, #B68A1E) !important;
+  color: white !important;
+}
+
+/* ICON */
+.cdk-overlay-pane .mat-mdc-menu-item mat-icon {
+  color: inherit !important;
+}
+
+/* DIVIDER */
+.cdk-overlay-pane .mat-divider {
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+/* NORMAL STATE FIX */
+a[mat-stroked-button],
+button[mat-stroked-button] {
+  color: #f8e7bf !important;
+  border: 1px solid #C9A227 !important;
+  background: rgba(201, 162, 39, 0.12);
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+a[mat-stroked-button]:hover,
+button[mat-stroked-button]:hover {
+  background: linear-gradient(135deg, #C9A227, #B68A1E) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* ICON */
+a[mat-stroked-button] mat-icon,
+button[mat-stroked-button] mat-icon {
+  color: inherit;
+}
+
+a[mat-flat-button],
+button[mat-flat-button] {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.mat-mdc-snack-bar-container.es-snack-success .mdc-snackbar__surface {
+  background: linear-gradient(135deg, #d4af37, #c9a227) !important;
+  color: #111827 !important;
+}
+
+.mat-mdc-snack-bar-container.es-snack-success .mdc-snackbar__label,
+.mat-mdc-snack-bar-container.es-snack-success .mat-mdc-button {
+  color: #111827 !important;
+  font-weight: 700;
+}
+
+.mat-mdc-snack-bar-container.es-snack-error .mdc-snackbar__surface {
+  background: #1f2937 !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(201, 162, 39, 0.38);
+}
+
+.mat-mdc-snack-bar-container.es-snack-error .mdc-snackbar__label,
+.mat-mdc-snack-bar-container.es-snack-error .mat-mdc-button {
+  color: #f8fafc !important;
+}

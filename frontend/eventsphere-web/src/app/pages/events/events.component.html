@@ -1,0 +1,81 @@
+<div class="eventsBgWrap">
+
+  <div class="head">
+    <div>
+      <h2 class="es-section-title">Events</h2>
+      <div class="es-muted">Discover upcoming events and book in seconds.</div>
+    </div>
+
+    <a mat-stroked-button routerLink="/marketplace">
+      <mat-icon>storefront</mat-icon>
+      Marketplace
+    </a>
+  </div>
+
+  <div class="grid">
+    @if (events$ | async; as events) {
+
+      @for (e of events; track e.id; let i = $index) {
+
+        <mat-card class="eventCard">
+
+          <div class="imageWrap">
+            <img
+              [src]="getEventImage(i)"
+              (error)="onImageError($event)"
+              alt="event"
+            />
+            <div class="overlay"></div>
+
+            <div class="topBadge">
+              {{ e.categoryId || 'Event' }}
+            </div>
+
+            <div class="priceTag">
+              {{ e.price | currency:'INR':'symbol':'1.0-0' }}
+            </div>
+          </div>
+
+          <mat-card-content>
+            <div class="title">{{ e.title }}</div>
+
+            <div class="meta">
+              <span>
+                <mat-icon>place</mat-icon>
+                {{ e.location }}
+              </span>
+
+              <span>
+                <mat-icon>schedule</mat-icon>
+                {{ e.startUtc | date:'mediumDate' }}
+              </span>
+            </div>
+
+            <div class="actions">
+              <a mat-flat-button color="primary" [routerLink]="['/events', e.id]">
+                Book Now
+              </a>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      } @empty {
+
+        <app-empty-state
+          icon="event_busy"
+          title="No events yet"
+          description="Check back soon or ask an organizer to publish one."
+        />
+
+      }
+
+    } @else {
+
+      <app-loading-block />
+
+    }
+  </div>
+
+</div>
+ 

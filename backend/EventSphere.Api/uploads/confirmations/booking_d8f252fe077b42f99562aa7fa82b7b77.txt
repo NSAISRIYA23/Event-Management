@@ -1,0 +1,8 @@
+﻿EventSphere Booking Confirmation
+
+Booking ID: d8f252fe077b42f99562aa7fa82b7b77
+Event: Tech Summit 2026 – AI, Cloud & Cyber
+Event ID: evt_techsummit_2026
+Quantity: 1
+Total: 499
+Created (UTC): 2026-03-19T16:02:33.9991423Z

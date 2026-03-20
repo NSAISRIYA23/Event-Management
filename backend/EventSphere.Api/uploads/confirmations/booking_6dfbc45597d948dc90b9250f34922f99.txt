@@ -1,0 +1,20 @@
+﻿EventSphere
+========================================
+        Booking Confirmation
+========================================
+
+Booking ID   : 6dfbc45597d948dc90b9250f34922f99
+Attendee     : smily
+Booking Date : 2026-03-20
+
+Event        : Tech Summit 2026 – AI, Cloud & Cyber
+Event Start  : 2026-04-12 04:00 UTC
+Location     : Bengaluru • Convention Hall A
+
+Quantity     : 1
+Total Amount : 3200
+
+----------------------------------------
+Thank you for booking with EventSphere!
+Have an amazing event experience.
+----------------------------------------

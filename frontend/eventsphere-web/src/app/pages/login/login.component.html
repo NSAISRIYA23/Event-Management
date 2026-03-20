@@ -1,0 +1,61 @@
+<div class="auth-wrap">
+
+  <div class="auth-container">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-left">
+      <h1>Welcome back 👋</h1>
+      <p>
+        Log in to manage your bookings, orders, and event experiences — all in one place.
+      </p>
+
+      <ul>
+        <li>✔ Book events instantly</li>
+        <li>✔ Track orders easily</li>
+        <li>✔ Access resources anytime</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-right">
+
+      <h2>Sign in</h2>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="fill" floatLabel="always" class="full">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field appearance="fill" floatLabel="always" class="full">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+
+        <!-- ERROR -->
+        @if (error()) {
+          <div class="err">{{ error() }}</div>
+        }
+
+        <!-- BUTTON -->
+        <button mat-flat-button class="login-btn" type="submit"
+          [disabled]="loading() || form.invalid">
+          <mat-icon>login</mat-icon>
+          Log in
+        </button>
+
+      </form>
+
+      <div class="bottom-text">
+        No account?
+        <a routerLink="/register">Create one</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

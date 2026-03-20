@@ -1,0 +1,38 @@
+.head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tableCard {
+  padding: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 720px;
+  box-sizing: border-box;
+}
+
+.cellTitle {
+  font: var(--mat-sys-title-medium);
+}
+
+.small {
+  font: var(--mat-sys-body-small);
+}
+
+.actionsCol {
+  text-align: right;
+  white-space: nowrap;
+}
+

@@ -1,0 +1,16 @@
+# Angular
+node_modules/
+dist/
+.angular/
+
+# .NET
+bin/
+obj/
+
+# IDE
+.vscode/
+.cursor/
+
+# misc
+.env
+*.log

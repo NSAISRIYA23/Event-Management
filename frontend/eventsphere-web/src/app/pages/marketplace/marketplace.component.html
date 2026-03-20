@@ -1,0 +1,68 @@
+<div class="marketBgWrap">
+
+  <div class="head">
+    <div>
+      <h2 class="es-section-title">Marketplace</h2>
+      <div class="es-muted">Products and services for your event experience.</div>
+    </div>
+
+    <a mat-flat-button color="primary" routerLink="/cart">
+      <mat-icon>shopping_bag</mat-icon>
+      Go to cart
+    </a>
+  </div>
+
+  <div class="grid">
+    @if (products$ | async; as items) {
+
+      @for (p of items; track p.id; let i = $index) {
+
+        <mat-card class="marketCard">
+
+          <!-- IMAGE -->
+          <div class="imageWrap">
+            <img [src]="getProductImage(i)" (error)="onImageError($event)" />
+
+            <div class="overlay"></div>
+
+            <div class="priceTag">
+              {{ p.price | currency:'INR':'symbol':'1.0-0' }}
+            </div>
+          </div>
+
+          <!-- CONTENT -->
+          <mat-card-content>
+            <div class="title">{{ p.name }}</div>
+
+            <div class="desc">
+              {{ p.description }}
+            </div>
+
+            <div class="actions">
+              <button mat-flat-button color="primary" (click)="add(p)">
+                <mat-icon>add_shopping_cart</mat-icon>
+                Add to cart
+              </button>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      } @empty {
+
+        <app-empty-state
+          icon="storefront"
+          title="No products yet"
+          description="Once products are added, you can place orders from here."
+        />
+
+      }
+
+    } @else {
+
+      <app-loading-block />
+
+    }
+  </div>
+
+</div>

@@ -1,0 +1,107 @@
+<div class="wrap">
+  <div class="head">
+    <a mat-stroked-button color="primary" (click)="backToBookings()">
+      <mat-icon>arrow_back</mat-icon>
+      Back to My bookings
+    </a>
+  </div>
+
+  @if (booking$ | async; as b) {
+    @if (b) {
+      <div class="grid">
+        <mat-card class="es-card panel">
+          <mat-card-content>
+            <div class="titleRow">
+              <div>
+                <div class="kicker es-muted">Booking confirmed</div>
+                <div class="title">Your ticket is ready</div>
+              </div>
+              <div class="pill">
+                <mat-icon>confirmation_number</mat-icon>
+                {{ b.id.slice(0, 8) }}
+              </div>
+            </div>
+
+            <div class="meta">
+              <span class="es-muted">
+                <mat-icon>payment</mat-icon>
+                {{ b.paymentMethod }}
+              </span>
+              <span class="es-muted">
+                <mat-icon>schedule</mat-icon>
+                {{ b.createdAtUtc | date:'medium' }}
+              </span>
+              <span class="es-muted">
+                <mat-icon>confirmation_number</mat-icon>
+                {{ b.quantity }} ticket(s)
+              </span>
+            </div>
+
+            <mat-divider class="divider" />
+
+            <div class="section">
+              <div class="sectionTitle">Event</div>
+              @if (event$ | async; as e) {
+                <div class="eventTitle">{{ e.title }}</div>
+                <div class="es-muted metaLine">
+                  <mat-icon>place</mat-icon>
+                  {{ e.location }}
+                </div>
+                <div class="es-muted metaLine">
+                  <mat-icon>schedule</mat-icon>
+                  {{ e.startUtc | date:'medium' }}
+                </div>
+              } @else {
+                <div class="es-muted">Event details unavailable.</div>
+              }
+            </div>
+
+            <div class="summaryRow">
+              <div class="sumLabel es-muted">Total</div>
+              <div class="sumValue">{{ b.totalAmount | currency:'INR':'symbol':'1.0-0' }}</div>
+            </div>
+
+            <div class="actions">
+              @if (b.confirmationPdfUrl) {
+                <a
+                  mat-flat-button
+                  color="primary"
+                  [href]="origin() + b.confirmationPdfUrl"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </a>
+              } @else if (b.confirmationFileUrl) {
+                <a
+                  mat-stroked-button
+                  color="primary"
+                  [href]="origin() + b.confirmationFileUrl"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <mat-icon>download</mat-icon>
+                  Download confirmation
+                </a>
+              }
+              <button mat-stroked-button color="primary" (click)="backToBookings()">
+                <mat-icon>event</mat-icon>
+                View all bookings
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    } @else {
+      <app-empty-state
+        icon="confirmation_number"
+        title="Booking not found"
+        description="We couldn't find this booking. Please check your My bookings list."
+      />
+    }
+  } @else {
+    <app-empty-state icon="confirmation_number" title="Loading..." description="Fetching your booking details." />
+  }
+</div>
+

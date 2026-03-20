@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+  grid-template-columns: 1fr;
+}
+
+.head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions button[mat-stroked-button] {
+  color: #1f2937 !important;
+  border-color: rgba(201, 162, 39, 0.7) !important;
+  background: rgba(201, 162, 39, 0.2) !important;
+  font-weight: 700;
+}
+
+.actions button[mat-stroked-button]:hover {
+  color: #0b1220 !important;
+  border-color: #d4af37 !important;
+  background: linear-gradient(135deg, #f7df9d, #d4af37) !important;
+}
+
+.tableCard {
+  padding: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 720px;
+  box-sizing: border-box;
+}
+
+.cellTitle {
+  font: var(--mat-sys-title-medium);
+}
+
+.small {
+  font: var(--mat-sys-body-small);
+}
+
+.actionsCol {
+  text-align: right;
+  white-space: nowrap;
+}
+

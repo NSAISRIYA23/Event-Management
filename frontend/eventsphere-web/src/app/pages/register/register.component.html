@@ -1,0 +1,98 @@
+<div class="auth-page">
+
+  <div class="auth-card">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-left">
+      <h2>Create your account ✨</h2>
+      <p>
+        Join EventSphere and unlock a seamless experience for events,
+        bookings, and marketplace.
+      </p>
+
+      <div class="features">
+        <div>✔ Discover & book events</div>
+        <div>✔ Sell as organizer</div>
+        <div>✔ Access everything in one place</div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-right">
+
+      <h3>Sign up</h3>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+
+        <!-- NAME -->
+        <mat-form-field appearance="fill" floatLabel="always" class="full">
+          <mat-label>Full name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="fill" floatLabel="always" class="full">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+
+          @if (form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)) {
+            @if (form.controls.email.hasError('required')) {
+              <mat-error>Email is required</mat-error>
+            }
+            @if (form.controls.email.hasError('email')) {
+              <mat-error>Enter a valid email</mat-error>
+            }
+          }
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field appearance="fill" floatLabel="always" class="full">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+
+          @if (form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)) {
+            @if (form.controls.password.hasError('minlength')) {
+              <mat-error>Minimum 8 characters</mat-error>
+            }
+            @if (form.controls.password.hasError('strongPassword')) {
+              <mat-error>Must include uppercase, lowercase, number & symbol</mat-error>
+            }
+          }
+        </mat-form-field>
+
+        <!-- TOGGLE -->
+        <div class="toggle">
+          <mat-slide-toggle formControlName="isAdmin">
+            Register as Organizer
+          </mat-slide-toggle>
+          <div class="hint">
+            Create events, products & resources
+          </div>
+        </div>
+
+        <!-- ERROR -->
+        @if (error()) {
+          <div class="err">{{ error() }}</div>
+        }
+
+        <!-- BUTTON -->
+        <button mat-flat-button type="submit"
+          class="auth-btn"
+          [disabled]="loading() || form.invalid">
+          <mat-icon>person_add</mat-icon>
+          Create account
+        </button>
+
+      </form>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        Already have an account?
+        <a routerLink="/login">Log in</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="resourcesBgWrap">
+
+  <div class="header">
+    <div>
+      <h2 class="es-section-title">Resource Center</h2>
+      <div class="es-muted">Download resources (PDFs and attachments) linked to events.</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    @if (resources$ | async; as items) {
+
+      @for (r of items; track r.id) {
+
+        <mat-card class="resourceCard">
+
+          <mat-card-content>
+
+            <div class="topRow">
+              <div class="fileIcon">
+                <mat-icon>description</mat-icon>
+              </div>
+
+              <div class="date">
+                {{ r.createdAtUtc | date:'mediumDate' }}
+              </div>
+            </div>
+
+            <div class="title">{{ r.title }}</div>
+
+            <div class="desc">
+              {{ r.description }}
+            </div>
+
+            <div class="meta">
+              <span>
+                <mat-icon>picture_as_pdf</mat-icon>
+                {{ r.originalFileName }}
+              </span>
+
+              <span>
+                <mat-icon>data_usage</mat-icon>
+                {{ r.fileSizeBytes }} bytes
+              </span>
+            </div>
+
+            <div class="actions">
+              <a mat-flat-button color="primary"
+                 [href]="origin() + r.fileUrl"
+                 target="_blank"
+                 rel="noopener">
+                <mat-icon>download</mat-icon>
+                Download
+              </a>
+            </div>
+
+          </mat-card-content>
+
+        </mat-card>
+
+      } @empty {
+
+        <app-empty-state
+          icon="folder_open"
+          title="No resources yet"
+          description="When organizers upload resources, they’ll show up here."
+        />
+
+      }
+
+    } @else {
+
+      <app-loading-block />
+
+    }
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F172A" stop-opacity="0.82"/>
+      <stop offset="0.55" stop-color="#7C3AED" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="r" cx="25%" cy="25%" r="65%">
+      <stop offset="0" stop-color="#F59E0B" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="520" fill="#0F172A"/>
+  <rect width="1600" height="520" fill="url(#g)"/>
+  <rect width="1600" height="520" fill="url(#r)"/>
+
+  <!-- paper cards -->
+  <g opacity="0.35" fill="#F8FAFC">
+    <rect x="180" y="110" width="360" height="250" rx="28"/>
+    <rect x="580" y="70" width="320" height="220" rx="26"/>
+    <rect x="920" y="140" width="470" height="260" rx="30"/>
+  </g>
+
+  <g opacity="0.18" stroke="#F8FAFC" fill="none" stroke-width="2">
+    <path d="M240 170 H480"/>
+    <path d="M240 210 H430"/>
+    <path d="M240 250 H390"/>
+    <path d="M640 130 H840"/>
+    <path d="M640 170 H790"/>
+    <path d="M1000 220 H1260"/>
+    <path d="M1000 260 H1180"/>
+  </g>
+</svg>
+
