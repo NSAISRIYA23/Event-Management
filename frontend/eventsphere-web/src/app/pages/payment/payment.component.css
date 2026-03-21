@@ -211,3 +211,21 @@
   }
 }
 
+@media (max-width: 640px) {
+  .wrap {
+    padding: 12px;
+  }
+
+  .titleRow {
+    flex-wrap: wrap;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+

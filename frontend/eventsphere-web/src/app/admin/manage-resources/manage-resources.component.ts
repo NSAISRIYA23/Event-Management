@@ -1,4 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +20,9 @@ import { EventItem, ResourceItem } from '../../core/api/api.models';
 @Component({
   selector: 'app-manage-resources',
   standalone: true,
+  host: {
+    '[class.admin-compact-layout]': 'layoutCompact()'
+  },
   imports: [
     DatePipe,
     ReactiveFormsModule,
@@ -39,6 +44,12 @@ export class ManageResourcesComponent {
   private readonly api = inject(ApiService);
   private readonly fb = inject(FormBuilder);
   private readonly snack = inject(MatSnackBar);
+  private readonly breakpoint = inject(BreakpointObserver);
+
+  /** Cards vs table: viewport ≤1280px (or touch coarse — covered by width on most devices). */
+  readonly layoutCompact = signal(
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 1279.98px)').matches
+  );
 
   loading = signal(true);
   resources = signal<ResourceItem[]>([]);
@@ -51,6 +62,12 @@ export class ManageResourcesComponent {
 
   readonly origin = computed(() => environment.apiBaseUrl.replace(/\/api\/?$/, ''));
 
+  fileHref(fileUrl: string) {
+    if (!fileUrl) return '#';
+    if (/^https?:\/\//i.test(fileUrl)) return fileUrl;
+    return `${this.origin()}${fileUrl.startsWith('/') ? fileUrl : `/${fileUrl}`}`;
+  }
+
   form = this.fb.nonNullable.group({
     title: ['', [Validators.required, Validators.minLength(2)]],
     description: [''],
@@ -58,6 +75,10 @@ export class ManageResourcesComponent {
   });
 
   constructor() {
+    this.breakpoint
+      .observe('(max-width: 1279.98px)')
+      .pipe(takeUntilDestroyed())
+      .subscribe(state => this.layoutCompact.set(state.matches));
     this.refresh();
   }
 

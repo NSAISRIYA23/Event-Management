@@ -143,6 +143,7 @@
 
 .content {
   flex: 1;
+  min-width: 0;
   background: linear-gradient(180deg, #f5f5f5 0%, #ececec 100%);
 }
 
@@ -155,6 +156,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 14px;
   padding: 10px 24px;
 }
 
@@ -181,4 +184,80 @@
 
 .page {
   padding: 24px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 224px;
+  }
+
+  .page {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 860px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    box-shadow: none;
+  }
+
+  /* 2×2 grid: full labels visible (no horizontal clip like "Reso…") */
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 12px 10px;
+    padding-bottom: 0;
+    overflow-x: visible;
+  }
+
+  .menu-item {
+    margin: 0;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    padding: 10px 8px;
+    font-size: 13px;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  .menu-item mat-icon {
+    margin: 0 auto;
+  }
+
+  .user {
+    padding-top: 12px;
+  }
+
+  .topbar {
+    padding: 10px 14px;
+  }
+
+  .topbar-title {
+    font-size: 16px;
+  }
+
+  .topbar-link {
+    white-space: nowrap;
+  }
+
+  .page {
+    padding: 14px;
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(14px, env(safe-area-inset-bottom, 0px));
+  }
 }

@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatOptionModule } from '@angular/material/core';
+import { Order } from '../../core/api/api.models';
+import { InvoiceService } from '../../core/pdf/invoice.service';
 
 type PaymentMethod = 'upi' | 'card' | 'netbanking' | 'cod';
 
@@ -50,6 +52,7 @@ export class PaymentComponent {
   private readonly auth = inject(AuthService);
   private readonly cart = inject(CartService);
   private readonly router = inject(Router);
+  private readonly invoice = inject(InvoiceService);
 
   readonly mode = this.route.snapshot.queryParamMap.get('mode') === 'order' ? 'order' : 'booking';
   private readonly eventId = this.route.snapshot.queryParamMap.get('eventId') ?? '';
@@ -64,6 +67,7 @@ export class PaymentComponent {
   msg = '';
   successMsg = '';
   receiptUrl = '';
+  latestOrder: Order | null = null;
 
   paymentMethod: PaymentMethod = 'upi';
 
@@ -150,6 +154,7 @@ export class PaymentComponent {
           this.processing = false;
           this.successMsg = 'Payment successful. Order received.';
           this.receiptUrl = order.receiptPdfUrl ? this.origin + order.receiptPdfUrl : '';
+          this.latestOrder = order;
           this.cart.clear();
         },
         error: e => {
@@ -158,6 +163,17 @@ export class PaymentComponent {
         }
       });
     }, 1200);
+  }
+
+  downloadOrderInvoice() {
+    if (!this.latestOrder) return;
+    this.invoice.downloadOrderInvoice({
+      orderId: this.latestOrder.id,
+      createdAtUtc: this.latestOrder.createdAtUtc,
+      paymentMethod: this.latestOrder.paymentMethod,
+      totalAmount: this.latestOrder.totalAmount,
+      lines: this.latestOrder.items
+    });
   }
 }
 

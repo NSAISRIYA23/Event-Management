@@ -46,8 +46,8 @@
 
             <div class="actions">
               <a mat-flat-button color="primary"
-                 [href]="origin() + r.fileUrl"
-                 target="_blank"
+                 [href]="fileHref(r.fileUrl)"
+                 [target]="fileTarget()"
                  rel="noopener">
                 <mat-icon>download</mat-icon>
                 Download

@@ -246,3 +246,51 @@
     padding-top: 0;
   }
 }
+
+@media (max-width: 640px) {
+  .leftCol {
+    min-height: unset;
+    gap: 12px;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.9rem, 8.5vw, 2.3rem);
+    line-height: 1.12;
+    max-width: 14ch;
+  }
+
+  .heroSub {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .es-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .es-actions .ctaBtn {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+  }
+
+  .quickHead h3 {
+    font-size: 1.2rem;
+  }
+
+  .quickItem {
+    padding: 14px;
+  }
+
+  .trustedWrap {
+    padding: 12px;
+  }
+
+  .brandLogo {
+    min-width: 116px;
+    height: 42px;
+    padding: 0 12px;
+  }
+}

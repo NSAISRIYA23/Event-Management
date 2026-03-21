@@ -136,6 +136,11 @@
                   <mat-icon>picture_as_pdf</mat-icon>
                   Download Invoice
                 </a>
+              } @else {
+                <button mat-flat-button color="primary" type="button" (click)="downloadOrderInvoice()">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </button>
               }
               <a mat-stroked-button color="primary" routerLink="/my-orders">Go to my orders</a>
             </div>

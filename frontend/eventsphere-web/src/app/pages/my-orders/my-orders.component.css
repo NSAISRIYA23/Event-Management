@@ -99,3 +99,21 @@
   }
 }
 
+@media (max-width: 640px) {
+  .ordersWrap {
+    padding: 12px;
+  }
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .line {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+

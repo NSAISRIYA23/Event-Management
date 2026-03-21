@@ -27,5 +27,17 @@ export class ResourcesComponent {
   private readonly api = inject(ApiService);
   readonly resources$ = this.api.resources();
   readonly origin = computed(() => environment.apiBaseUrl.replace(/\/api\/?$/, ''));
+  private readonly isPhone =
+    typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+  fileHref(fileUrl: string) {
+    if (!fileUrl) return '#';
+    if (/^https?:\/\//i.test(fileUrl)) return fileUrl;
+    return `${this.origin()}${fileUrl.startsWith('/') ? fileUrl : `/${fileUrl}`}`;
+  }
+
+  fileTarget() {
+    return this.isPhone ? '_self' : '_blank';
+  }
 }
 

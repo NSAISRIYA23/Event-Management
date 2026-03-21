@@ -18,28 +18,30 @@
 
     <span class="es-spacer"></span>
 
-    @if (!isLoggedIn()) {
-      <a mat-stroked-button routerLink="/login">Log in</a>
-      <a mat-flat-button routerLink="/register">Create account</a>
-    } @else {
-      <button type="button" [matMenuTriggerFor]="menu" class="es-userBtn">
-        <span class="es-avatar">{{ initials() }}</span>
-        <span class="es-userMeta">
-          <span class="es-userName">{{ user()?.name }}</span>
-        </span>
-        <mat-icon>expand_more</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/my-bookings"><mat-icon>confirmation_number</mat-icon>My bookings</a>
-        <a mat-menu-item routerLink="/my-orders"><mat-icon>receipt_long</mat-icon>My orders</a>
-        @if (isAdmin()) {
+    <div class="es-auth">
+      @if (!isLoggedIn()) {
+        <a mat-stroked-button routerLink="/login">Log in</a>
+        <a mat-flat-button routerLink="/register">Create account</a>
+      } @else {
+        <button type="button" [matMenuTriggerFor]="menu" class="es-userBtn">
+          <span class="es-avatar">{{ initials() }}</span>
+          <span class="es-userMeta">
+            <span class="es-userName">{{ user()?.name }}</span>
+          </span>
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item routerLink="/my-bookings"><mat-icon>confirmation_number</mat-icon>My bookings</a>
+          <a mat-menu-item routerLink="/my-orders"><mat-icon>receipt_long</mat-icon>My orders</a>
+          @if (isAdmin()) {
+            <mat-divider></mat-divider>
+            <a mat-menu-item routerLink="/admin/dashboard"><mat-icon>admin_panel_settings</mat-icon>Admin</a>
+          }
           <mat-divider></mat-divider>
-          <a mat-menu-item routerLink="/admin/dashboard"><mat-icon>admin_panel_settings</mat-icon>Admin</a>
-        }
-        <mat-divider></mat-divider>
-        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
-      </mat-menu>
-    }
+          <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+        </mat-menu>
+      }
+    </div>
   </div>
 </mat-toolbar>
 

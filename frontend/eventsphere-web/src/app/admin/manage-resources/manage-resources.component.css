@@ -1,11 +1,33 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
   margin-top: 16px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Let grid columns shrink on narrow screens (prevents horizontal overflow). */
+.grid > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .panel {
   padding: 14px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
 }
 
 .panelTitle {
@@ -16,18 +38,54 @@
 .form {
   display: grid;
   gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Narrow side column (single-column layout): keep outlined fields inside the card at any width. */
+:host ::ng-deep .form mat-form-field {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+:host ::ng-deep .form .mat-mdc-form-field-infix {
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .form .mat-mdc-text-field-wrapper,
+:host ::ng-deep .form .mat-mdc-form-field-flex {
+  width: 100%;
+  max-width: 100%;
 }
 
 .listHead {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-bottom: 8px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.resourceRefreshBtn {
+  flex-shrink: 0;
+}
+
+.listHeadLabel {
+  min-width: 0;
+  flex: 1;
 }
 
 .tableCard {
   padding: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -51,35 +109,24 @@
   white-space: nowrap;
 }
 
+:host ::ng-deep .table .mat-mdc-cell {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
 /* Keep labels clean and stop input text from touching outline line. */
 :host ::ng-deep .mat-mdc-form-field .mdc-text-field--outlined {
   --mdc-outlined-text-field-container-shape: 10px;
   --mdc-outlined-text-field-container-color: #ffffff;
 }
 
+/* Do not zero horizontal padding — it breaks outlined floating labels (overlap / heavy notch). */
 :host ::ng-deep .mat-mdc-form-field .mdc-text-field__input {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
   line-height: 1.4;
 }
 
 :host ::ng-deep .mat-mdc-form-field textarea.mdc-text-field__input {
-  padding-top: 12px !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  line-height: 1.4;
-}
-
-:host ::ng-deep .mat-mdc-form-field .mat-mdc-select-trigger {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-}
-
-:host ::ng-deep .mat-mdc-form-field .mat-mdc-select-value {
   line-height: 1.4;
 }
 
@@ -96,10 +143,6 @@
   z-index: 12000 !important;
 }
 
-:host ::ng-deep .mat-mdc-form-field .mat-mdc-form-field-infix {
-  padding-left: 12px;
-  padding-right: 12px;
-}
 
 :host ::ng-deep .mat-mdc-form-field .mdc-floating-label {
   font-weight: 500;
@@ -119,10 +162,151 @@
   color: #111827;
 }
 
-@media (min-width: 1000px) {
-  .grid {
-    grid-template-columns: 0.9fr 1.1fr;
-    align-items: start;
-  }
+/* Card list only exists in DOM when layoutCompact(); keep layout styles here */
+.resourceMobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.resourceMobileCard {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+
+.resourceMobileCard mat-card-content {
+  padding: 14px !important;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.resourceMobileTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.resourceMobileTitleBlock {
+  min-width: 0;
+  flex: 1;
+}
+
+.resourceMobileTitle {
+  font: var(--mat-sys-title-medium);
+  font-weight: 600;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.resourceMobileFile {
+  font: var(--mat-sys-body-small);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.resourceMobileRows {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.resourceMobileRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(31, 41, 55, 0.04);
+  border: 1px solid rgba(31, 41, 55, 0.08);
+}
+
+.resourceMobileLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--mat-sys-on-surface) 55%, transparent);
+}
+
+.resourceMobileValue {
+  font-size: 13px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.resourceMobileDownload {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Narrow viewport: host class set from BreakpointObserver (same breakpoint as layoutCompact) */
+:host.admin-compact-layout {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+:host.admin-compact-layout .es-section-title,
+:host.admin-compact-layout .es-muted {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+:host.admin-compact-layout .listHead {
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+:host.admin-compact-layout .listHeadLabel {
+  flex: none;
+}
+
+:host.admin-compact-layout .resourceRefreshBtn {
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+}
+
+:host.admin-compact-layout .panel {
+  padding: 12px;
+}
+
+:host.admin-compact-layout .form {
+  gap: 10px;
+}
+
+:host.admin-compact-layout ::ng-deep .form .mat-mdc-form-field-subscript-wrapper {
+  max-width: 100%;
+}
+
+:host.admin-compact-layout ::ng-deep .form .mat-mdc-form-field-infix {
+  width: 100% !important;
+}
+
+:host.admin-compact-layout ::ng-deep .panel mat-card-content {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+:host.admin-compact-layout .fileInput {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+:host.admin-compact-layout .uploadSubmit {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 

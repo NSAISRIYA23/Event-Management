@@ -1,4 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CurrencyPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +17,9 @@ import { LoadingBlockComponent } from '../../shared/ui/loading-block/loading-blo
 @Component({
   selector: 'app-manage-products',
   standalone: true,
+  host: {
+    '[class.admin-compact-layout]': 'layoutCompact()'
+  },
   imports: [
     CurrencyPipe,
     MatCardModule,
@@ -33,12 +38,21 @@ export class ManageProductsComponent {
   private readonly api = inject(ApiService);
   private readonly dialog = inject(MatDialog);
   private readonly snack = inject(MatSnackBar);
+  private readonly breakpoint = inject(BreakpointObserver);
+
+  readonly layoutCompact = signal(
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 1279.98px)').matches
+  );
 
   loading = signal(true);
   products = signal<Product[]>([]);
   readonly displayedColumns = ['name', 'price', 'stock', 'actions'];
 
   constructor() {
+    this.breakpoint
+      .observe('(max-width: 1279.98px)')
+      .pipe(takeUntilDestroyed())
+      .subscribe(state => this.layoutCompact.set(state.matches));
     this.refresh();
   }
 

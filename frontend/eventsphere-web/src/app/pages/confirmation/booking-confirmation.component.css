@@ -121,3 +121,17 @@
   color: rgba(248, 250, 252, 0.78);
 }
 
+@media (max-width: 640px) {
+  .wrap {
+    padding: 12px;
+  }
+
+  .titleRow {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+

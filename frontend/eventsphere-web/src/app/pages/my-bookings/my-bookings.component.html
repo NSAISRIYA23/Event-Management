@@ -29,6 +29,11 @@
                   <mat-icon>download</mat-icon>
                   Download confirmation
                 </a>
+              } @else {
+                <button mat-stroked-button color="primary" type="button" (click)="downloadInvoice(b)">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </button>
               }
             </div>
           </mat-card-content>

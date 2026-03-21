@@ -1,15 +1,15 @@
 <div class="head">
-  <div>
+  <div class="headText">
     <h2 class="es-section-title">Manage products</h2>
     <div class="es-muted">Create, edit, and maintain marketplace inventory.</div>
   </div>
 
   <div class="actions">
-    <button mat-stroked-button (click)="refresh()">
+    <button mat-flat-button color="primary" type="button" class="productsRefreshBtn admin-refresh-navy" (click)="refresh()">
       <mat-icon>refresh</mat-icon>
       Refresh
     </button>
-    <button mat-flat-button color="primary" (click)="openCreate()">
+    <button mat-flat-button color="primary" type="button" class="createProductBtn" (click)="openCreate()">
       <mat-icon>add</mat-icon>
       Create product
     </button>
@@ -23,43 +23,77 @@
 @if (!loading() && products().length === 0) {
   <app-empty-state icon="storefront" title="No products yet" description="Add your first product to enable ordering." />
 } @else if (!loading()) {
-  <mat-card class="es-card tableCard">
-    <mat-card-content>
-      <table mat-table [dataSource]="products()" class="table">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let p">
-            <div class="cellTitle">{{ p.name }}</div>
-            <div class="es-muted small">#{{ p.id.slice(0, 8) }}</div>
-          </td>
-        </ng-container>
+  @if (layoutCompact()) {
+    <div class="productMobileList">
+      @for (p of products(); track p.id) {
+        <mat-card class="es-card productMobileCard">
+          <mat-card-content>
+            <div class="productMobileTop">
+              <div class="productMobileTitleBlock">
+                <div class="productMobileTitle">{{ p.name }}</div>
+                <div class="es-muted productMobileId">#{{ p.id.slice(0, 8) }}</div>
+              </div>
+              <div class="productMobileIconActions">
+                <button mat-icon-button type="button" (click)="openEdit(p)" aria-label="Edit">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button type="button" (click)="delete(p)" aria-label="Delete">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="productMobileRows">
+              <div class="productMobileRow">
+                <span class="productMobileLabel">Price</span>
+                <span class="productMobileValue es-muted">{{ p.price | currency:'INR':'symbol':'1.0-0' }}</span>
+              </div>
+              <div class="productMobileRow">
+                <span class="productMobileLabel">Stock</span>
+                <span class="productMobileValue es-muted">{{ p.stock }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  } @else {
+    <mat-card class="es-card tableCard">
+      <mat-card-content>
+        <table mat-table [dataSource]="products()" class="table">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let p">
+              <div class="cellTitle">{{ p.name }}</div>
+              <div class="es-muted small">#{{ p.id.slice(0, 8) }}</div>
+            </td>
+          </ng-container>
 
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef>Price</th>
-          <td mat-cell *matCellDef="let p" class="es-muted">{{ p.price | currency:'INR':'symbol':'1.0-0' }}</td>
-        </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let p" class="es-muted">{{ p.price | currency:'INR':'symbol':'1.0-0' }}</td>
+          </ng-container>
 
-        <ng-container matColumnDef="stock">
-          <th mat-header-cell *matHeaderCellDef>Stock</th>
-          <td mat-cell *matCellDef="let p" class="es-muted">{{ p.stock }}</td>
-        </ng-container>
+          <ng-container matColumnDef="stock">
+            <th mat-header-cell *matHeaderCellDef>Stock</th>
+            <td mat-cell *matCellDef="let p" class="es-muted">{{ p.stock }}</td>
+          </ng-container>
 
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let p" class="actionsCol">
-            <button mat-icon-button (click)="openEdit(p)" aria-label="Edit">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="delete(p)" aria-label="Delete">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let p" class="actionsCol">
+              <button mat-icon-button type="button" (click)="openEdit(p)" aria-label="Edit">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button type="button" (click)="delete(p)" aria-label="Delete">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  }
 }
-

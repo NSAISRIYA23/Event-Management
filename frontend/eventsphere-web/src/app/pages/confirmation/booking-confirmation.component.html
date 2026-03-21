@@ -73,7 +73,13 @@
                   <mat-icon>picture_as_pdf</mat-icon>
                   Download Invoice
                 </a>
-              } @else if (b.confirmationFileUrl) {
+              } @else {
+                <button mat-flat-button color="primary" type="button" (click)="downloadInvoice(b, null)">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </button>
+              }
+              @if (b.confirmationFileUrl) {
                 <a
                   mat-stroked-button
                   color="primary"

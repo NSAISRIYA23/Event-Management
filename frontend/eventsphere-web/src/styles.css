@@ -200,6 +200,17 @@ button[mat-flat-button] {
   font-weight: 600;
 }
 
+/* Admin — Manage products/resources Refresh: same primary flat button; only label/icon color */
+button.admin-refresh-navy[mat-flat-button],
+button.admin-refresh-navy[mat-flat-button].mat-mdc-unelevated-button {
+  color: #001f3f !important;
+}
+
+button.admin-refresh-navy[mat-flat-button] .mdc-button__label,
+button.admin-refresh-navy[mat-flat-button] mat-icon {
+  color: #001f3f !important;
+}
+
 .mat-mdc-snack-bar-container.es-snack-success .mdc-snackbar__surface {
   background: linear-gradient(135deg, #d4af37, #c9a227) !important;
   color: #111827 !important;
@@ -220,4 +231,34 @@ button[mat-flat-button] {
 .mat-mdc-snack-bar-container.es-snack-error .mdc-snackbar__label,
 .mat-mdc-snack-bar-container.es-snack-error .mat-mdc-button {
   color: #f8fafc !important;
+}
+
+@media (max-width: 1024px) {
+  .es-container {
+    width: min(1180px, calc(100% - 28px));
+  }
+}
+
+@media (max-width: 768px) {
+  .es-container {
+    width: min(1180px, calc(100% - 20px));
+  }
+
+  .es-page {
+    padding: 18px 0 36px;
+  }
+
+  .es-section-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* Mobile: allow user navbar to grow past single-row toolbar height so nav links aren’t clipped */
+@media (max-width: 860px) {
+  mat-toolbar.es-topbar.mat-toolbar-single-row {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
 }

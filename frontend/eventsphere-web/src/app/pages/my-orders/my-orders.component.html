@@ -26,14 +26,19 @@
                 </div>
               }
             </div>
-            @if (o.receiptPdfUrl) {
-              <div class="actions">
+            <div class="actions">
+              @if (o.receiptPdfUrl) {
                 <a mat-stroked-button color="primary" [href]="origin() + o.receiptPdfUrl" target="_blank" rel="noopener">
                   <mat-icon>picture_as_pdf</mat-icon>
                   Download Invoice
                 </a>
-              </div>
-            }
+              } @else {
+                <button mat-stroked-button color="primary" type="button" (click)="downloadInvoice(o)">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Download Invoice
+                </button>
+              }
+            </div>
           </mat-card-content>
         </mat-card>
       } @empty {
